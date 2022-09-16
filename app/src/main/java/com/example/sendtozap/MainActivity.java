@@ -2,7 +2,10 @@ package com.example.sendtozap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -11,10 +14,10 @@ import com.google.android.material.textfield.TextInputLayout;
 public class MainActivity extends AppCompatActivity {
 
     private TextInputLayout inputLayoutNumber;
-    private TextInputLayout inputLayoutMassagem;
+    private TextInputLayout inputLayoutMessage;
 
     private TextInputEditText inputNumber;
-    private TextInputEditText inputMassage;
+    private TextInputEditText inputMessage;
 
     private Button buttonSend;
 
@@ -24,11 +27,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         inputLayoutNumber = findViewById(R.id.InputLayoutNumber);
-        inputLayoutMassagem = findViewById(R.id.InputLayoutMassage);
+        inputLayoutMessage = findViewById(R.id.InputLayoutMessage);
 
         inputNumber = findViewById(R.id.numberInput);
-        inputMassage = findViewById(R.id.massageIput);
+        inputMessage = findViewById(R.id.messageInput);
 
         buttonSend = findViewById(R.id.buttonID);
+
+        buttonSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String messageTxt = inputMessage.getText().toString();
+                String numberTxt = inputNumber.getText().toString();
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone="+numberTxt+"&text="+messageTxt));
+
+                startActivity(intent);
+
+            }
+        });
     }
 }
