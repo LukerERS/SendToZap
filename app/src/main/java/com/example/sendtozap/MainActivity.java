@@ -13,8 +13,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextInputLayout inputLayoutNumber;
-    private TextInputLayout inputLayoutMessage;
 
     private TextInputEditText inputNumber;
     private TextInputEditText inputMessage;
@@ -26,8 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        inputLayoutNumber = findViewById(R.id.InputLayoutNumber);
-        inputLayoutMessage = findViewById(R.id.InputLayoutMessage);
 
         inputNumber = findViewById(R.id.numberInput);
         inputMessage = findViewById(R.id.messageInput);
